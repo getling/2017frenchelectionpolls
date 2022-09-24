@@ -1,9 +1,10 @@
 # Clear workspace
+
 rm(list = ls())
 library(tidyverse)
 library(magrittr)
 library(rvest)
-setwd("/Users/getling/Downloads/2017frenchelectionpolls")
+setwd("/Users/getling/Documents/Repositories/2017frenchelectionpolls")
 # Set base theme
 theme_set(theme_minimal())
 
@@ -37,6 +38,7 @@ polls <- read_csv("Frenchpolls.csv",
 library(RColorBrewer)
 library(ggthemes)
 library(scales)
+library(svglite)
 
 # Full unweighted average
 polls %>%
@@ -115,6 +117,8 @@ polls %>%
   theme_pander() +
   scale_colour_brewer(palette = "Set1")
 
+ggsave("SecondRound.svg", device = "svg", width = 14)
+ggsave("SecondRound.png", device = "png", width = 14)
 
 # Attempt to use bsts
 library(lubridate)
